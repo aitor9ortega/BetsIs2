@@ -43,30 +43,30 @@ class FacadeTest {
 		testBL = new TestFacadeImplementation();
 	}
 
-	@Test
-	@DisplayName("The event has one question with a queryText")
-	void createQuestionBLTest1() {
-
-		try {
-			Date oneDate = sdf.parse("05/10/2022");
-
-			// configure the state of the system (create object in the database)
-			ev = testBL.addEvent(queryText, oneDate);
-			sut.createQuestion(ev, queryText, betMinimum);
-
-			// invoke System Under Test (sut)
-			assertThrows(QuestionAlreadyExist.class, () -> sut.createQuestion(ev, queryText, betMinimum));
-
-		} catch (ParseException | EventFinished | QuestionAlreadyExist e) {
-			// if the program goes to this point fail
-			fail("No problems should arise: ParseException/EventFinished/QuestionaAlreadyExist");
-
-		} finally {
-			// Remove the created objects in the database (cascade removing)
-			boolean b = testBL.removeEvent(ev);
-			assertTrue(b);
-		}
-	}
+//	@Test
+//	@DisplayName("The event has one question with a queryText")
+//	void createQuestionBLTest1() {
+//
+//		try {
+//			Date oneDate = sdf.parse("05/10/2022");
+//
+//			// configure the state of the system (create object in the database)
+//			ev = testBL.addEvent(queryText, oneDate);
+//			sut.createQuestion(ev, queryText, betMinimum);
+//
+//			// invoke System Under Test (sut)
+//			assertThrows(QuestionAlreadyExist.class, () -> sut.createQuestion(ev, queryText, betMinimum));
+//
+//		} catch (ParseException | EventFinished | QuestionAlreadyExist e) {
+//			// if the program goes to this point fail
+//			fail("No problems should arise: ParseException/EventFinished/QuestionaAlreadyExist");
+//
+//		} finally {
+//			// Remove the created objects in the database (cascade removing)
+//			boolean b = testBL.removeEvent(ev);
+//			assertTrue(b);
+//		}
+//	}
 
 	@Test
 	@DisplayName("The event has NOT one question with a queryText")

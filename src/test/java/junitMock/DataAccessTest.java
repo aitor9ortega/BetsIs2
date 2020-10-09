@@ -33,29 +33,29 @@ class DataAccessTest {
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	private Event ev;
 
-	@Test
-	@DisplayName("The event has one question with a queryText")
-	void createQuestionDATest1() {
-
-		try {
-			Date oneDate = sdf.parse("05/10/2022");
-
-			// configure the state of the system (create object in the dabatase)
-			ev = testBL.addEvent(queryText, oneDate);
-			sut.createQuestion(ev, queryText, betMinimum);
-
-			// invoke System Under Test (sut)
-			assertThrows(QuestionAlreadyExist.class, () -> sut.createQuestion(ev, queryText, betMinimum));
-
-		} catch (ParseException | QuestionAlreadyExist e) {
-			fail("No problems should arise: ParseException/QuestionaAlreadyExist");
-		} finally {
-			// Remove the created objects in the database (cascade removing)
-			boolean b = testBL.removeEvent(ev);
-			assertTrue(b);
-		}
-
-	}
+//	@Test
+//	@DisplayName("The event has one question with a queryText")
+//	void createQuestionDATest1() {
+//
+//		try {
+//			Date oneDate = sdf.parse("05/10/2022");
+//
+//			// configure the state of the system (create object in the dabatase)
+//			ev = testBL.addEvent(queryText, oneDate);
+//			sut.createQuestion(ev, queryText, betMinimum);
+//
+//			// invoke System Under Test (sut)
+//			assertThrows(QuestionAlreadyExist.class, () -> sut.createQuestion(ev, queryText, betMinimum));
+//
+//		} catch (ParseException | QuestionAlreadyExist e) {
+//			fail("No problems should arise: ParseException/QuestionaAlreadyExist");
+//		} finally {
+//			// Remove the created objects in the database (cascade removing)
+//			boolean b = testBL.removeEvent(ev);
+//			assertTrue(b);
+//		}
+//
+//	}
 
 	@Test
 	@DisplayName("The event has NOT one question with a queryText")
