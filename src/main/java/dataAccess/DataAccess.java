@@ -47,6 +47,7 @@ import exceptions.UsernameNoExist;
  * It implements the data access to the objectDb database
  */
 public class DataAccess  {
+//	Es una prueba para ver si funciona
 	protected static EntityManager  db;
 	protected static EntityManagerFactory emf;
 
@@ -269,7 +270,6 @@ public class DataAccess  {
 	 * @throws UsernameNoExist if there is no users registered with that username
 	 */
 	public Person login(String username, String password) throws BadPassword, UsernameNoExist {
-		
 		Person dbUser = db.find(Person.class, username);
 			if (dbUser == null)
 				throw new UsernameNoExist("There are no users with this username!");
