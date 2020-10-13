@@ -43,8 +43,6 @@ class BLFacadeImplementationLoginMockTest {
 			fail("Algo ha ido mal en el metodo");
 		}
 		assertThrows(UsernameNoExist.class,()-> sut.login("Cristian", "Cris54"));
-			
-
 	}
 	
 	@Test
@@ -65,16 +63,16 @@ class BLFacadeImplementationLoginMockTest {
 	@DisplayName("Test 3:Devuelve al usuario correctamente ")
 	public void test3() {
 		Person p = new Person("Aitor", "Aitor98");
-		Person expected = null;
+		Person obtained = null;
 		try {
 			Mockito.doReturn(p).when(dao).login("Aitor", "Aitor98");
-			expected=sut.login("Aitor", "Aitor98");
+			obtained=sut.login("Aitor", "Aitor98");
 		} catch (BadPassword | UsernameNoExist e) {
 			fail("Algo ha ido mal en el metodo");
 		}
 	
-		assertEquals(expected.getUsername(),p.getUsername() );
-		assertEquals(expected.getPassword(),p.getPassword() );
+		assertEquals(p.getUsername(),obtained.getUsername() );
+		assertEquals(p.getPassword(),obtained.getPassword() );
 
 	}
 

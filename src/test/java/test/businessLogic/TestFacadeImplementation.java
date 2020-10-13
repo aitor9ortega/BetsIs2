@@ -7,6 +7,7 @@ import java.util.Date;
 
 import configuration.ConfigXML;
 import domain.Event;
+import domain.Person;
 import test.dataAccess.TestDataAccess;
 
 public class TestFacadeImplementation {
@@ -38,5 +39,22 @@ public class TestFacadeImplementation {
 			return o;
 
 		}
+
+//______________________________AITOR__________________________________________________________
+		public Person register(String username, String pass) {
+			dbManagerTest.open();
+			Person p=dbManagerTest.register(username,pass);
+			dbManagerTest.close();
+			return p;
+		}
+
+		public boolean removePerson(Person p) {
+			dbManagerTest.open();
+			boolean b=dbManagerTest.removePerson(p);
+			dbManagerTest.close();
+			return b;	
+		}
+//______________________________AITOR__________________________________________________________
+
 
 }

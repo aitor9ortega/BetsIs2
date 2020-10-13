@@ -13,6 +13,7 @@ import javax.persistence.Persistence;
 
 import configuration.ConfigXML;
 import domain.Event;
+import domain.Person;
 
 public class TestDataAccess {
 	protected  EntityManager  db;
@@ -82,5 +83,37 @@ public class TestDataAccess {
 				}
 				return ev;
 	    }
+
+
+//______________________________AITOR__________________________________________________________
+
+		public Person register(String username, String pass) {
+			System.out.println(">> DataAccessTest: register");
+			Person p=null;
+			db.getTransaction().begin();
+			try {
+			    p=new Person(username,pass);
+				db.persist(p);
+				db.getTransaction().commit();
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+			return p;
+		}
+		
+		public boolean removePerson(Person p) {
+			System.out.println(">> DataAccessTest: removePerson");
+			Person e = db.find(Person.class, p.getUsername());
+			if (e!=null) {
+				db.getTransaction().begin();
+				db.remove(e);
+				db.getTransaction().commit();
+				return true;
+			} else 
+			return false;
+		}
+//______________________________AITOR__________________________________________________________
+
 }
 
