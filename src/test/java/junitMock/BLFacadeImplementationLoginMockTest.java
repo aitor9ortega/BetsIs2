@@ -68,7 +68,7 @@ class BLFacadeImplementationLoginMockTest {
 		Person expected = null;
 		try {
 			Mockito.doReturn(p).when(dao).login("Aitor", "Aitor98");
-			expected=sut.login("Juan", "Jaun123");
+			expected=sut.login("Aitor", "Aitor98");
 		} catch (BadPassword | UsernameNoExist e) {
 			fail("Algo ha ido mal en el metodo");
 		}
