@@ -204,6 +204,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.close();
 		return p;
 	}
+	
 	/**
 	 * This method inserts a new user in the database
 	 * @param u, the new user

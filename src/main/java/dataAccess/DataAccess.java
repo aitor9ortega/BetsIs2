@@ -250,8 +250,6 @@ public class DataAccess  {
 		
 		Date firstDayMonthDate= UtilDate.firstDayMonth(date);
 		Date lastDayMonthDate= UtilDate.lastDayMonth(date);
-				
-		
 		TypedQuery<Date> query = db.createQuery("SELECT DISTINCT ev.eventDate FROM Event ev WHERE ev.eventDate BETWEEN ?1 and ?2",Date.class);   
 		query.setParameter(1, firstDayMonthDate);
 		query.setParameter(2, lastDayMonthDate);
@@ -272,13 +270,14 @@ public class DataAccess  {
 	 */
 	public Person login(String username, String password) throws BadPassword, UsernameNoExist {
 		Person dbUser = db.find(Person.class, username);
+		
 			if (dbUser == null)
 				throw new UsernameNoExist("There are no users with this username!");
 			
 			if (!dbUser.getPassword().equals(password)) {
 				throw new BadPassword("Wrong Password!");
 			}
-		
+			
 		return dbUser;
 	}
 
