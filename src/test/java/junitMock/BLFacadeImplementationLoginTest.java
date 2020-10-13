@@ -38,11 +38,11 @@ class BLFacadeImplementationLoginTest {
 	public void test1() {
 	
 		try {
-			Mockito.doThrow(new UsernameNoExist()).when(dao).login("Juan", "Jaun123");
+			Mockito.doThrow(new UsernameNoExist()).when(dao).login("Cristian", "Cris54");
 		} catch (BadPassword | UsernameNoExist e) {
 			fail("Algo ha ido mal en el metodo");
 		}
-		assertThrows(UsernameNoExist.class,()-> sut.login("Juan", "Jaun123"));
+		assertThrows(UsernameNoExist.class,()-> sut.login("Cristian", "Cris54"));
 			
 
 	}
@@ -52,22 +52,22 @@ class BLFacadeImplementationLoginTest {
 	public void test2() {
 	
 		try {
-			Mockito.doThrow(new BadPassword()).when(dao).login("Juan", "Jaun123");
+			Mockito.doThrow(new BadPassword()).when(dao).login("Aitor", "98Aitor");
 		} catch (BadPassword | UsernameNoExist e) {
 			fail("Algo ha ido mal en el metodo");
 		}
-		assertThrows(BadPassword.class,()-> sut.login("Juan", "Jaun123"));
+		assertThrows(BadPassword.class,()-> sut.login("Aitor", "98Aitor"));
 			
 
 	}
 	
 	@Test
-	@DisplayName("Test 3:Everithing is OK ")
+	@DisplayName("Test 3:Devuelve al usuario correctamente ")
 	public void test3() {
-		Person p = new Person("Juan", "Jaun123");
+		Person p = new Person("Aitor", "Aitor98");
 		Person expected = null;
 		try {
-			Mockito.doReturn(p).when(dao).login("Juan", "Jaun123");
+			Mockito.doReturn(p).when(dao).login("Aitor", "Aitor98");
 			expected=sut.login("Juan", "Jaun123");
 		} catch (BadPassword | UsernameNoExist e) {
 			fail("Algo ha ido mal en el metodo");
