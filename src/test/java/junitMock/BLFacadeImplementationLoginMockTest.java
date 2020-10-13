@@ -17,7 +17,7 @@ import exceptions.UsernameNoExist;
 
 
 
-class BLFacadeImplementationLoginTest {
+class BLFacadeImplementationLoginMockTest {
 
 	private BLFacadeImplementation sut;
 	@Mock
