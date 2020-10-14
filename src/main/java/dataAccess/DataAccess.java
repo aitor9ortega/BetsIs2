@@ -47,6 +47,7 @@ import exceptions.UsernameNoExist;
  * It implements the data access to the objectDb database
  */
 public class DataAccess  {
+	//Aitor
 	protected static EntityManager  db;
 	protected static EntityManagerFactory emf;
 
