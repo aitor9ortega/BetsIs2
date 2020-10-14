@@ -25,8 +25,6 @@ import test.businessLogic.TestFacadeImplementation;
 
 class DataAccessTest {
 //	aitor
-	
-//	aitor
 //Aitor
 	// sut- System Under Test
 	private DataAccess sut = new DataAccess(ConfigXML.getInstance().getDataBaseOpenMode().equals("initialize"));;
