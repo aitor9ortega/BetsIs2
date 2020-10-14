@@ -24,6 +24,8 @@ import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 
 class DataAccessTest {
+	//Aitor
+	
 	// sut- System Under Test
 	private DataAccess sut = new DataAccess(ConfigXML.getInstance().getDataBaseOpenMode().equals("initialize"));;
 	private TestFacadeImplementation testBL = new TestFacadeImplementation();
