@@ -47,8 +47,7 @@ import exceptions.UsernameNoExist;
  * It implements the data access to the objectDb database
  */
 public class DataAccess  {
-//	Es una prueba para ver si funciona
-//	a ver
+
 	protected static EntityManager  db;
 	protected static EntityManagerFactory emf;
 
