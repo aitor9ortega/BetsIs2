@@ -26,7 +26,6 @@ class DataAccessLoginTest {
 	private static TestFacadeImplementation testBL = new TestFacadeImplementation();
 
 
-//ahbdsfscvb
 
 	@BeforeAll
 	public static void initialize() {
