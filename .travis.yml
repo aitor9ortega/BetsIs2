@@ -3,7 +3,6 @@ addons:
  organization: "aitor9ortega"
  token: "5d3fd731e22c05c4694bea7419d5827695f01867"
 script:
- # the following command line builds the project, runs the tests with
-coverage
+ # the following command line builds the project, runs the tests with coverage
  # and then execute the SonarCloud analysis
  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install org.jacoco:jacoco-maven-plugin:report install sonar:sonar
