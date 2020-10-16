@@ -41,6 +41,7 @@ public class TestFacadeImplementation {
 		}
 
 //______________________________AITOR__________________________________________________________
+		
 		public Person register(String username, String pass) {
 			dbManagerTest.open();
 			Person p=dbManagerTest.register(username,pass);
@@ -54,6 +55,7 @@ public class TestFacadeImplementation {
 			dbManagerTest.close();
 			return b;	
 		}
+		
 //______________________________AITOR__________________________________________________________
 
 

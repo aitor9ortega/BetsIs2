@@ -25,7 +25,6 @@ class DataAccessLoginTest {
 	private static DataAccess sut = new DataAccess(ConfigXML.getInstance().getDataBaseOpenMode().equals("initialize"));;
 	private static TestFacadeImplementation testBL = new TestFacadeImplementation();
 
-//asfa
 
 	@BeforeAll
 	public static void initialize() {
