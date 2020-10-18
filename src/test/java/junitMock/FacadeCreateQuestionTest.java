@@ -1,7 +1,7 @@
 package junitMock;
 
 /**
- * FacadeTest: Some JUnit example for Facade
+ * FacadeCreateQuestionTest: Some JUnit example for Facade
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,7 +25,7 @@ import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 
-class FacadeTest {
+class FacadeCreateQuestionTest {
 	static BLFacadeImplementation sut;
 	static TestFacadeImplementation testBL;
 
@@ -76,13 +76,10 @@ class FacadeTest {
 		try {
 			Date oneDate = sdf.parse("05/10/2022");
 
-			// configure the state of the system (create object in the dabatase)
 			ev = testBL.addEvent(queryText, oneDate);
 
-			// invoke System Under Test (sut)
 			Question q = sut.createQuestion(ev, queryText, betMinimum);
 
-			// verify the results
 			assertNotNull(q);
 			assertEquals(queryText, q.getQuestion());
 			assertEquals(betMinimum, q.getBetMinimum(), 0);
@@ -90,7 +87,6 @@ class FacadeTest {
 		
 
 		} finally {
-			// Remove the created objects in the database (cascade removing)
 			boolean b = testBL.removeEvent(ev);
 			System.out.println("Finally " + b);
 		}

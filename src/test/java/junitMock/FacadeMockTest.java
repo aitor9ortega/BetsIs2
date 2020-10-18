@@ -5,7 +5,6 @@ package junitMock;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,7 +36,6 @@ class FacadeMockTest {
 
 	BLFacade sut = new BLFacadeImplementation(dataAccess);
 
-	// sut.createQuestion: The event has one question with a queryText.
 
 	@BeforeEach
 	public void setUp() {
@@ -52,12 +50,11 @@ class FacadeMockTest {
 
 			Date oneDate = sdf.parse("05/10/2022");
 
-			// configure Mock
+			
 			Mockito.doReturn(oneDate).when(mockedEvent).getEventDate();
 			Mockito.when(dataAccess.createQuestion(Mockito.any(Event.class), Mockito.any(String.class),
 					Mockito.any(Integer.class))).thenThrow(QuestionAlreadyExist.class);
 
-			// invoke System Under Test (sut)
 			assertThrows(QuestionAlreadyExist.class, () -> sut.createQuestion(mockedEvent, queryText, betMinimum));
 
 		
@@ -70,15 +67,15 @@ class FacadeMockTest {
 		
 			Date oneDate = sdf.parse("05/10/2022");
 
-			// configure Mock
+		
 			Mockito.doReturn(oneDate).when(mockedEvent).getEventDate();
 			Mockito.doReturn(new Question(queryText, betMinimum, mockedEvent)).when(dataAccess)
 					.createQuestion(Mockito.any(Event.class), Mockito.any(String.class), Mockito.any(Integer.class));
 
-			// invoke System Under Test (sut)
+		
 			Question q = sut.createQuestion(mockedEvent, queryText, betMinimum);
 
-			// verify the results
+		
 			assertNotNull(q);
 
 			ArgumentCaptor<Event> eventCaptor = ArgumentCaptor.forClass(Event.class);
