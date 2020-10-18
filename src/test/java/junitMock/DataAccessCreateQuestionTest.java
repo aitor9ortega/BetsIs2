@@ -1,6 +1,6 @@
 package junitMock;
 /**
- * DataAccessTest: Some JUnit example for DataAccess
+ * DataAccessCreateQuestionTest: Some JUnit example for DataAccess
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,7 +28,7 @@ import domain.Question;
 import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 
-class DataAccessTest {
+class DataAccessCreateQuestionTest {
 	// sut- System Under Test
 	private DataAccess sut = new DataAccess(ConfigXML.getInstance().getDataBaseOpenMode().equals("initialize"));;
 	private TestFacadeImplementation testBL = new TestFacadeImplementation();

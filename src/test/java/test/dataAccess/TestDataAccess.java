@@ -57,7 +57,7 @@ public class TestDataAccess {
 	
 
 	public boolean removeEvent(Event ev) {
-		System.out.println(">> DataAccessTest: removeEvent");
+		System.out.println(">> DataAccessCreateQuestionTest: removeEvent");
 		Event e = db.find(Event.class, ev.getEventNumber());
 		if (e!=null) {
 			db.getTransaction().begin();
@@ -69,7 +69,7 @@ public class TestDataAccess {
     }
 		
 		public Event addEvent(String desc, Date d) {
-			System.out.println(">> DataAccessTest: addEvent");
+			System.out.println(">> DataAccessCreateQuestionTest: addEvent");
 			Event ev=null;
 				db.getTransaction().begin();
 				try {
