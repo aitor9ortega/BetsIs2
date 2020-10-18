@@ -205,7 +205,8 @@ public class DataAccess  {
 		
 			Event ev = db.find(Event.class, event.getEventNumber());
 			
-			if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
+			if (ev.DoesQuestionExists(question)) 
+				throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
 			
 			db.getTransaction().begin();
 			Question q = ev.addQuestion(question, betMinimum);

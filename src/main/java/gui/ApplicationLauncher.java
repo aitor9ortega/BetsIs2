@@ -32,7 +32,7 @@ public class ApplicationLauncher {
 		i.setVisible(true);
 		//b.setVisible(true);
 
-		
+
 
 		try {
 			

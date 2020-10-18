@@ -46,10 +46,10 @@ class FacadeMockTest {
 
 	@SuppressWarnings("unchecked")
 	@Test
-	@DisplayName("The event has one question with a queryText")
-	void createQuestionBLMockTest1() {
+	@DisplayName("Question already exist")
+	void createQuestionBLMockTest1() throws QuestionAlreadyExist, ParseException {
 
-		try {
+
 			Date oneDate = sdf.parse("05/10/2022");
 
 			// configure Mock
@@ -60,16 +60,14 @@ class FacadeMockTest {
 			// invoke System Under Test (sut)
 			assertThrows(QuestionAlreadyExist.class, () -> sut.createQuestion(mockedEvent, queryText, betMinimum));
 
-		} catch (ParseException | QuestionAlreadyExist e) {
-			fail("No problems should arise: ParseException/QuestionaAlreadyExist");
-		}
+		
 	}
 
 	@Test
 	@DisplayName("The event has NOT a question with a queryText")
-	void createQuestionBLMocktest2() {
+	void createQuestionBLMocktest2() throws QuestionAlreadyExist, ParseException, EventFinished {
 
-		try {
+		
 			Date oneDate = sdf.parse("05/10/2022");
 
 			// configure Mock
@@ -94,10 +92,7 @@ class FacadeMockTest {
 			assertEquals(queryText, questionStringCaptor.getValue());
 			assertEquals(betMinimum, betMinimunCaptor.getValue());
 
-		} catch (ParseException | QuestionAlreadyExist | EventFinished e) {
-			fail("No problems should arise: ParseException/QuestionaAlreadyExist");
-
-		}
+		
 	}
 
 }
