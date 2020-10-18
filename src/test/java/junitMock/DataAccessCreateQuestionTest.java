@@ -7,15 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.junit.Assert.assertThat;
 
-import java.io.Serializable;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
+
 
 
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +26,6 @@ import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 
 class DataAccessCreateQuestionTest {
-	// sut- System Under Test
 	private DataAccess sut = new DataAccess(ConfigXML.getInstance().getDataBaseOpenMode().equals("initialize"));;
 	private TestFacadeImplementation testBL = new TestFacadeImplementation();
 
@@ -64,20 +60,16 @@ class DataAccessCreateQuestionTest {
 		try {
 			Date oneDate = sdf.parse("05/10/2022");
 
-			// configure the state of the system (create object in the dabatase)
 			ev = testBL.addEvent(queryText, oneDate);
 
-			// invoke System Under Test (sut)
 			Question q = sut.createQuestion(ev, queryText, betMinimum);
 
-			// verify the results
 			assertNotNull(q);
 			assertEquals(queryText, q.getQuestion());
 			assertEquals(betMinimum, q.getBetMinimum(), 0);
 
 	
 		} finally {
-			// Remove the created objects in the database (cascade removing)
 			boolean b = testBL.removeEvent(ev);
 			assertTrue(b);
 		}
