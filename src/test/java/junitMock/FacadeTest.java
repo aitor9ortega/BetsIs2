@@ -5,9 +5,7 @@ package junitMock;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -70,7 +68,7 @@ class FacadeTest {
 
 	@Test
 	@DisplayName("The event has NOT one question with a queryText")
-	void createQuestionBLTest2() {
+	void createQuestionBLTest2() throws ParseException, EventFinished, QuestionAlreadyExist {
 
 		try {
 			Date oneDate = sdf.parse("05/10/2022");
@@ -86,9 +84,7 @@ class FacadeTest {
 			assertEquals(queryText, q.getQuestion());
 			assertEquals(betMinimum, q.getBetMinimum(), 0);
 
-		} catch (ParseException | QuestionAlreadyExist | EventFinished e) {
-			// if the program goes to this point fail
-			fail("No problems should arise: ParseException/EventFinished/QuestionaAlreadyExist");
+		
 
 		} finally {
 			// Remove the created objects in the database (cascade removing)

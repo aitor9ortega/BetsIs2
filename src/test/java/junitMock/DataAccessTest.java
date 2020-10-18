@@ -8,10 +8,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.Assert.assertThat;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -58,8 +63,25 @@ class DataAccessTest {
 //	}
 
 	@Test
+	@DisplayName("Test 1: question already exist")
+	public void test1() throws QuestionAlreadyExist, ParseException{
+		
+		Date d = sdf.parse("05/10/2022");
+		ev = testBL.addEvent(queryText, d);
+		
+		Question q = sut.createQuestion(ev, "Quien ganará el partido?", betMinimum);
+	
+		
+	
+		String question = q.getQuestion();
+		assertThrows(QuestionAlreadyExist.class, () -> sut.createQuestion(ev, question, betMinimum));
+		   
+		
+
+	}
+	@Test
 	@DisplayName("The event has NOT one question with a queryText")
-	void createQuestionDATest2() {
+	void createQuestionDATest2() throws ParseException, QuestionAlreadyExist {
 
 		try {
 			Date oneDate = sdf.parse("05/10/2022");
@@ -75,9 +97,7 @@ class DataAccessTest {
 			assertEquals(queryText, q.getQuestion());
 			assertEquals(betMinimum, q.getBetMinimum(), 0);
 
-		} catch (QuestionAlreadyExist | ParseException e) {
-			fail("No problems should arise: ParseException/QuestionaAlreadyExist");
-		
+	
 		} finally {
 			// Remove the created objects in the database (cascade removing)
 			boolean b = testBL.removeEvent(ev);
