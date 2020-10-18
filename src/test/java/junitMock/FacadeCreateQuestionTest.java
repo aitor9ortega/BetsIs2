@@ -1,7 +1,7 @@
 package junitMock;
 
 /**
- * FacadeTest: Some JUnit example for Facade
+ * FacadeCreateQuestionTest: Some JUnit example for Facade
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,7 +25,7 @@ import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 
-class FacadeTest {
+class FacadeCreateQuestionTest {
 	static BLFacadeImplementation sut;
 	static TestFacadeImplementation testBL;
 
