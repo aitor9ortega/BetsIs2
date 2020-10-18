@@ -20,7 +20,7 @@ import exceptions.UsernameNoExist;
 import test.businessLogic.TestFacadeImplementation;
 
 class DataAccessLoginTest {
-	
+//	Aitor
 	// sut- System Under Test
 	private static DataAccess sut = new DataAccess(ConfigXML.getInstance().getDataBaseOpenMode().equals("initialize"));;
 	private static TestFacadeImplementation testBL = new TestFacadeImplementation();
