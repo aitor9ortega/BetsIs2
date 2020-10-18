@@ -18,7 +18,7 @@ import exceptions.UsernameNoExist;
 
 
 class BLFacadeImplementationLoginMockTest {
-//A
+
 	private BLFacadeImplementation sut;
 	@Mock
 	private DataAccess dao;
