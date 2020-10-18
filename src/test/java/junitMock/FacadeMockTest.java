@@ -46,7 +46,7 @@ class FacadeMockTest {
 
 	@SuppressWarnings("unchecked")
 	@Test
-	@DisplayName("The event has one question with a queryText")
+	@DisplayName("Question already exist")
 	void createQuestionBLMockTest1() throws QuestionAlreadyExist, ParseException {
 
 

@@ -1,11 +1,12 @@
 package junitMock;
+
 /**
  * FacadeTest: Some JUnit example for Facade
  */
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -41,31 +42,33 @@ class FacadeTest {
 		testBL = new TestFacadeImplementation();
 	}
 
-//	@Test
-//	@DisplayName("The event has one question with a queryText")
-//	void createQuestionBLTest1() {
-//
-//		try {
-//			Date oneDate = sdf.parse("05/10/2022");
-//
-//			// configure the state of the system (create object in the database)
-//			ev = testBL.addEvent(queryText, oneDate);
-//			sut.createQuestion(ev, queryText, betMinimum);
-//
-//			// invoke System Under Test (sut)
-//			assertThrows(QuestionAlreadyExist.class, () -> sut.createQuestion(ev, queryText, betMinimum));
-//
-//		} catch (ParseException | EventFinished | QuestionAlreadyExist e) {
-//			// if the program goes to this point fail
-//			fail("No problems should arise: ParseException/EventFinished/QuestionaAlreadyExist");
-//
-//		} finally {
-//			// Remove the created objects in the database (cascade removing)
-//			boolean b = testBL.removeEvent(ev);
-//			assertTrue(b);
-//		}
-//	}
+	@Test
+	@DisplayName("Test1: question already exist")
+	public void test1() throws ParseException, QuestionAlreadyExist, EventFinished {
 
+		Date d = sdf.parse("05/10/2022");
+		ev = testBL.addEvent(queryText, d);
+
+		Question q = sut.createQuestion(ev, "Quien ganará el partido?", betMinimum);
+
+		String question = q.getQuestion();
+		assertThrows(QuestionAlreadyExist.class, () -> sut.createQuestion(ev, question, betMinimum));
+
+	}
+
+	@Test
+	@DisplayName("Test3: event finished")
+	public void test3() throws ParseException, EventFinished, QuestionAlreadyExist {
+		Date d = sdf.parse("05/10/2019");
+		ev = testBL.addEvent(queryText, d);
+
+	
+		assertThrows(EventFinished.class, () -> sut.createQuestion(ev, queryText, betMinimum));
+
+	}
+
+	
+	
 	@Test
 	@DisplayName("The event has NOT one question with a queryText")
 	void createQuestionBLTest2() throws ParseException, EventFinished, QuestionAlreadyExist {
